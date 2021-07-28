@@ -1,0 +1,61 @@
+<div class="app mat-app-background">
+  <mat-sidenav-container class="app-sidenav-container">
+    <mat-sidenav class="app-sidenav" #sidenav>
+      <mat-list class="app-sidenav__title">
+        <mat-list-item>
+          <h2>Formula 1</h2>
+        </mat-list-item>
+      </mat-list>
+      <mat-nav-list class="app-sidenav__nav-list">
+        <mat-divider></mat-divider>
+        <mat-list-item class="app-sidenav__nav-list-item">
+          <mat-icon matPrefix>home</mat-icon>
+          <span>Home</span>
+        </mat-list-item>
+        <mat-list-item class="app-sidenav__nav-list-item">
+          <mat-icon matPrefix>calendar_today</mat-icon>
+          <span>Race Calendar</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>Standings</h3>
+        <mat-list-item class="app-sidenav__nav-list-item">
+          <mat-icon matPrefix>pin</mat-icon>
+          <span>Driver Standings</span>
+        </mat-list-item>
+        <mat-list-item class="app-sidenav__nav-list-item">
+          <mat-icon matPrefix>pin</mat-icon>
+          <span>Constructor Standings</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>Drivers</h3>
+        <mat-list-item class="app-sidenav__nav-list-item">
+          <mat-icon matPrefix>sports_motorsports</mat-icon>
+          <span>Current Drivers</span>
+        </mat-list-item>
+        <mat-list-item class="app-sidenav__nav-list-item">
+          <mat-icon matPrefix>sports_motorsports</mat-icon>
+          <span>All Drivers</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>Circuits</h3>
+        <mat-list-item class="app-sidenav__nav-list-item">
+          <mat-icon matPrefix>room</mat-icon>
+          <span>Current Circuits</span>
+        </mat-list-item>
+        <mat-list-item class="app-sidenav__nav-list-item">
+          <mat-icon matPrefix>room</mat-icon>
+          <span>All Circuits</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="app-content">
+      <mat-toolbar color="primary" class="app-toolbar">
+        <mat-toolbar-row>
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
