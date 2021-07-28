@@ -37,8 +37,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import { DriversStandingsTableComponent } from './shared/drivers-standings-table/drivers-standings-table.component';
+import { ConstructorsStandingsTableComponent } from './shared/constructors-standings-table/constructors-standings-table.component';
+import { FooterComponent } from './shared/footer/footer.component';
+
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, DriversStandingsTableComponent, ConstructorsStandingsTableComponent, FooterComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,

@@ -22,31 +22,66 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
-.app, .app-sidenav-container, .app-sidenav {
+.app, .sidenav-container, .sidenav {
   height: 100%;
   min-height: 100vh;
 }
 
-.app-sidenav {
+.sidenav {
   min-width: 320px;
 
-  .app-sidenav__title h2 {
+  .sidenav__title h2 {
     padding: 0;
     margin: 0;
   }
 
-  .app-sidenav__nav-list {
+  .sidenav__nav-list {
     h3 {
       height: auto;
       margin-top: 10px;
       padding: 5px 16px;
     }
-    .app-sidenav__nav-list-item {
+    .sidenav__nav-list-item {
       .mat-list-item-content {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 0px 5px;
+      }
+    }
+  }
+}
+
+.toolbar {
+  color: #fff;
+  background: #f53b3b;
+}
+
+.content {
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+    .section {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px 0;
+      align-items: center;
+      .section-inner {
+        width: 100%;
+        max-width: 1300px;
+      }
+      .section-header h3 {
+        margin: 0;
+        margin-bottom: 5px;
+        font-size: 18px;
+      }
+    }
+    .section.banner {
+      background: #f1f1f1;
+      .mat-divider {
+        background: #d8d8d8;
       }
     }
   }
