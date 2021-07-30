@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -37,15 +38,18 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
-import { DriversStandingsTableComponent } from './shared/drivers-standings-table/drivers-standings-table.component';
-import { ConstructorsStandingsTableComponent } from './shared/constructors-standings-table/constructors-standings-table.component';
-import { FooterComponent } from './shared/footer/footer.component';
+import { DriversStandingsTableComponent } from './shared/components/drivers-standings-table/drivers-standings-table.component';
+import { ConstructorsStandingsTableComponent } from './shared/components/constructors-standings-table/constructors-standings-table.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { LastRaceTableComponent } from './shared/components/last-race-table/last-race-table.component';
+import { EventCardComponent } from './pages/home/event-card/event-card.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DriversStandingsTableComponent, ConstructorsStandingsTableComponent, FooterComponent],
+  declarations: [AppComponent, HomeComponent, DriversStandingsTableComponent, ConstructorsStandingsTableComponent, FooterComponent, LastRaceTableComponent, EventCardComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatCheckboxModule,

@@ -64,13 +64,33 @@
               <h3>Scheduled Events</h3>
               <mat-divider></mat-divider>
             </div>
-            <div class="section-content"></div>
+            <div class="section-content">
+              <div class="scheduled-events">
+                <app-event-card></app-event-card>
+              </div>
+            </div>
           </div>
         </div>
         <!-- Standings -->
-        <div class="section">
+        <div class="section standings">
           <div class="section-inner">
-
+            <mat-tab-group class="tab-group" [(selectedIndex)]="selectedIndex" align="center">
+              <mat-tab label="Driver Standings" isActive="true">
+                <div class="tab-group__content">
+                  <app-drivers-standings-table></app-drivers-standings-table>
+                </div>
+              </mat-tab>
+              <mat-tab label="Constructor Standings">
+                <div class="tab-group__content">
+                  <app-constructors-standings-table></app-constructors-standings-table>
+                </div>
+              </mat-tab>
+              <mat-tab label="Last Race">
+                <div class="tab-group__content">
+                  <app-last-race-table></app-last-race-table>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
           </div>
         </div>
       </div>
