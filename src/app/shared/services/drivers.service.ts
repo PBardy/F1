@@ -8,7 +8,7 @@ export class DriversService {
 
   constructor(private api: ApiService) { }
 
-  get currentYear(): string {
+  get currentSeason(): string {
     return new Date().getFullYear().toString();
   }
 
@@ -16,16 +16,12 @@ export class DriversService {
     
   }
 
-  getDriversFromCurrentYear() {
-    return this.getDriversByYear(this.currentYear);
+  getDriversFromCurrentSeason() {
+    return this.getDriversByYear(this.currentSeason);
   }
 
-  getDriverStandingsByYear(year: string, round: number) {
+  getDriverStandingsBySeason(year: string, round: string) {
     return this.api.get(`${year}/${round}/driverStandings`);
-  }
-
-  getDriverStandingsForCurrentYear(round: number = 1) {
-    return this.getDriverStandingsByYear(this.currentYear, round);
   }
 
 }

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LastRaceTableComponent } from './last-race-table.component';
+import { StandingsComponent } from './standings.component';
 
-describe('LastRaceTableComponent', () => {
-  let component: LastRaceTableComponent;
-  let fixture: ComponentFixture<LastRaceTableComponent>;
+describe('StandingsComponent', () => {
+  let component: StandingsComponent;
+  let fixture: ComponentFixture<StandingsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LastRaceTableComponent ]
+      declarations: [ StandingsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LastRaceTableComponent);
+    fixture = TestBed.createComponent(StandingsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

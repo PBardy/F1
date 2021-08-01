@@ -27,6 +27,10 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100vh;
 }
 
+.mat-drawer-container {
+  background: #eee;
+}
+
 .sidenav {
   min-width: 320px;
 
@@ -57,32 +61,67 @@ h1, h2, h3, h4, h5, h6 {
   background: #f53b3b;
 }
 
-.content {
-  .content-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 20px 0;
-    .section {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px 0;
-      align-items: center;
-      .section-inner {
-        width: 100%;
-        max-width: 1300px;
-      }
-      .section-header h3 {
-        margin: 0;
-        margin-bottom: 5px;
-        font-size: 18px;
-      }
-    }
-    .section.banner {
-      background: #f1f1f1;
-      .mat-divider {
-        background: #d8d8d8;
-      }
-    }
-  }
+
+.table {
+  min-width: 800px;
+}
+
+.hbox, .vbox {
+  display: flex;
+}
+
+.hbox {
+  flex-direction: row;
+}
+
+.vbox {
+  flex-direction: column;
+}
+
+.hgap-5 {
+  gap: 0 5px;
+}
+
+.hgap-10 {
+  gap: 0 10px;
+}
+
+.hgap-15 {
+  gap: 0 15px;
+}
+
+.hgap-20 {
+  gap: 0 20px;
+}
+
+.vgap-5 {
+  gap: 5px 0;
+}
+
+.vgap-10 {
+  gap: 10px 0;
+}
+
+.vgap-15 {
+  gap: 15px 0;
+}
+
+.vgap-20 {
+  gap: 20px 0;
+}
+
+.hbox.vcenter {
+  align-items: center;
+}
+
+.hbox.hcenter {
+  justify-content: center;
+}
+
+.vbox.hcenter {
+  align-items: center;
+}
+
+.vbox.vcenter {
+  justify-content: center;
 }

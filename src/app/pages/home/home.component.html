@@ -49,49 +49,66 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content class="content">
-      <mat-toolbar class="toolbar">
-        <mat-toolbar-row>
-          <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-          </button>
-        </mat-toolbar-row>
-      </mat-toolbar>
-      <div class="content-wrapper">
-        <!-- Scheduled Events Section -->
-        <div class="section banner">
-          <div class="section-inner">
-            <div class="section-header">
-              <h3>Scheduled Events</h3>
-              <mat-divider></mat-divider>
-            </div>
-            <div class="section-content">
-              <div class="scheduled-events">
-                <app-event-card></app-event-card>
-              </div>
-            </div>
-          </div>
+      <app-toolbar [sidenav]="sidenav" [title]="'Formula 1'"></app-toolbar>
+      <div class="section">
+        <div class="section-header"></div>
+        <div class="section-content">
+
         </div>
-        <!-- Standings -->
-        <div class="section standings">
-          <div class="section-inner">
-            <mat-tab-group class="tab-group" [(selectedIndex)]="selectedIndex" align="center">
-              <mat-tab label="Driver Standings" isActive="true">
-                <div class="tab-group__content">
-                  <app-drivers-standings-table></app-drivers-standings-table>
-                </div>
-              </mat-tab>
-              <mat-tab label="Constructor Standings">
-                <div class="tab-group__content">
-                  <app-constructors-standings-table></app-constructors-standings-table>
-                </div>
-              </mat-tab>
-              <mat-tab label="Last Race">
-                <div class="tab-group__content">
-                  <app-last-race-table></app-last-race-table>
-                </div>
-              </mat-tab>
-            </mat-tab-group>
+      </div>
+      <div class="section">
+        <div class="section-content vbox vgap-20">
+
+          <div class="form-controls vbox vgap-20 hcenter" *ngIf="seasonsLoaded">
+
+            <div class="vbox vgap-5 hcenter">
+              <h2>F1 Standings</h2>
+              <p>
+                The tables below detail the the driver standings for the selected season and round. <br> 
+                Historic data ranges from {{firstSeason.season}} - {{latestSeason.season}}.
+              </p>
+            </div>
+
+            <div class="hbox hgap-20">
+              <mat-form-field *ngIf="latestSeason">
+                <mat-label>Season</mat-label>
+                <mat-select [(value)]="latestSeason.season" (selectionChange)="onSeasonChange($event)">
+                  <mat-option *ngFor="let season of seasons" [value]="season.season">{{season.season}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field *ngIf="latestRound">
+                <mat-label>Round</mat-label>
+                <mat-select [(value)]="latestRound" (selectionChange)="onRoundChange($event)">
+                  <mat-option *ngFor="let round of rounds" [value]="round">{{round}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
           </div>
+
+          <mat-tab-group class="tab-group">
+            <mat-tab label="Drivers">
+              <div class="tab-group__content">
+                <app-drivers-standings-table 
+                  [round]="selectedRound"
+                  [season]="selectedSeason"
+                ></app-drivers-standings-table>
+              </div>
+            </mat-tab>
+            <mat-tab label="Constructors">
+              <div class="tab-group__content">
+                <app-constructors-standings-table
+                [round]="selectedRound"
+                [season]="selectedSeason"
+                ></app-constructors-standings-table>
+              </div>
+            </mat-tab>
+            <mat-tab label="Last Race">
+              <div class="tab-group__content">
+                <app-last-race-table></app-last-race-table>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
         </div>
       </div>
       <!-- Footer -->

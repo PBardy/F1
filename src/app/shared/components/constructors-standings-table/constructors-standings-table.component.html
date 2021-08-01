@@ -1,1 +1,50 @@
-<p>constructors-standings-table works!</p>
+<div class="header vbox">
+  <h4>Constructor Details</h4>
+  <div>Season: {{season}}</div>
+  <div>Round: {{round}}</div>
+</div>
+
+<ng-container *ngIf="dataLoaded">
+  <table mat-table matSort [dataSource]="tableData" class="table">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Constructor </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="hbox hgap-10 vcenter">
+          <div class="hbox">
+            <img src={{images.getFlagByNationality(element.Constructor.nationality)}} />
+          </div>
+          <div class="hbox vcenter">
+            <h4>{{element.Constructor.name}} </h4>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+  
+    <!-- Points Column -->
+    <ng-container matColumnDef="points">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Points </th>
+      <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+  </table>
+  
+  <mat-paginator [length]="dataSize" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" aria-label="Select page"></mat-paginator>  
+</ng-container>
+
+<ng-container *ngIf="dataRetrievalError">
+  <p>There was an error retrieving the data for this season or round.</p>
+</ng-container>
+
+<ng-container *ngIf="!dataLoaded && !dataRetrievalError && dataLoading">
+  <p>Getting data...</p>
+</ng-container>

@@ -43,9 +43,12 @@ import { ConstructorsStandingsTableComponent } from './shared/components/constru
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { LastRaceTableComponent } from './shared/components/last-race-table/last-race-table.component';
 import { EventCardComponent } from './pages/home/event-card/event-card.component';
+import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
+import { StandingsComponent } from './pages/standings/standings.component';
+import { RaceResultsTableComponent } from './shared/components/race-results-table/race-results-table.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DriversStandingsTableComponent, ConstructorsStandingsTableComponent, FooterComponent, LastRaceTableComponent, EventCardComponent],
+  declarations: [AppComponent, HomeComponent, DriversStandingsTableComponent, ConstructorsStandingsTableComponent, FooterComponent, LastRaceTableComponent, EventCardComponent, ToolbarComponent, StandingsComponent, RaceResultsTableComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,

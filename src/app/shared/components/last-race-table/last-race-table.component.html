@@ -1,1 +1,41 @@
-<p>last-race-table works!</p>
+<div class="header vbox">
+  <h4>Race Details</h4>
+  <div><span>Date: </span>{{raceDate}} @ {{raceTime}}</div>
+  <div><span>Race: </span>{{raceName}} @ <a href={{raceTrackUrl}}>{{raceTrack}}</a></div>
+</div>
+
+<table mat-table [dataSource]="tableData" class="table">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> # </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container [style.flex]="1" matColumnDef="driver">
+    <th mat-header-cell *matHeaderCellDef> Driver </th>
+    <td mat-cell *matCellDef="let element"> 
+      <div class="hbox vcenter hgap-10" [style.padding]="'10px 0'">
+        <div class="hbox vcenter">
+          <img class="thumbnail" src={{images.getFlagByNationality(element.Driver.nationality)}} />
+        </div>
+        <div class="vbox vcenter">
+          <h4>{{element.Driver.givenName}} {{element.Driver.familyName}}</h4>
+          <h6>{{element.Constructor.name}}</h6>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Time Column -->
+  <ng-container matColumnDef="time">
+    <th mat-header-cell *matHeaderCellDef> Time </th>
+    <td mat-cell *matCellDef="let element"> 
+      {{element.Time ? element.Time.time : element.status}} 
+    </td>
+  </ng-container>
+
+  <tr class="table-row" mat-header-row *matHeaderRowDef="tableColumns"></tr>
+  <tr class="table-row" mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+</table>
