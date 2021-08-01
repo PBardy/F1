@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { RaceResult } from 'src/app/definitions';
+import { RaceResult, RaceResultsResponse } from 'src/app/definitions';
 import { ImagesService } from '../../services/images.service';
 import { RacesService } from '../../services/races.service';
 
@@ -22,6 +22,7 @@ export class RaceResultsTableComponent implements OnInit, OnChanges {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  raceUrl: string;
   raceTime: string;
   raceDate: string;
   raceName: string;
@@ -44,11 +45,33 @@ export class RaceResultsTableComponent implements OnInit, OnChanges {
   }
 
   private onRaceResultsError(error: any): void {
-
+    this.dataLoading = false;
+    this.dataRetrievalError = true;
   }
 
   private onRaceResultsResponse(response: any): void {
+    response = response as RaceResultsResponse;
 
+    const table = response.MRData.RaceTable.Races[0];
+
+    if (table) {
+      const circuit = table.Circuit;
+      const results = table.Results;
+      this.raceUrl = table.url;
+      this.raceDate = table.date;
+      this.raceTime = table.time;
+      this.raceName = table.raceName;
+      this.raceTrack = circuit.circuitName;
+      this.raceTrackUrl = circuit.url;
+      this.tableData = results;
+      this.tableData.sort = this.sort;
+      this.tableData.paginator = this.paginator;
+      this.dataLoaded = true;
+      this.dataLoading = false;
+      return;
+    }
+
+    this.dataRetrievalError = true;
   }
 
   ngOnInit(): void {}

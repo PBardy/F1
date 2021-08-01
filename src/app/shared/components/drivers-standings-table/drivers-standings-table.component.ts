@@ -22,6 +22,9 @@ export class DriversStandingsTableComponent implements OnInit, OnChanges {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  pageSize: number = 0;
+  pageSizeOptions: number[] = [];
+
   dataSize: number = 20;
   dataLoaded: boolean = false;
   dataLoading: boolean = false;
@@ -50,10 +53,28 @@ export class DriversStandingsTableComponent implements OnInit, OnChanges {
       this.tableData.paginator = this.paginator;
       this.dataLoaded = true;
       this.dataLoading = false;
+      this.dataSize = list.DriverStandings.length;
+      this.updatePageSize();
+      this.updatePageSizeOptions();
       return;
     }
 
     this.dataRetrievalError = true;
+  }
+
+  private updatePageSize() {
+    this.pageSize = this.dataSize;
+  }
+
+  private updatePageSizeOptions() {
+    const min = Math.min(this.pageSize, 5);
+    const size = Math.floor(this.pageSize / 5); 
+    const options = [min];
+    for (let option = 0; min < size; option++) {
+      options.push(option * 5);
+    }
+
+    this.pageSizeOptions = options;
   }
 
   ngOnInit(): void {}

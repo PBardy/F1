@@ -194,3 +194,11 @@ export type DriverStandingsResponse = {
  export type ConstructorStandingsResponse = {
   MRData: StandingsTable;
 };
+
+/**
+ * Race Results Response
+ */
+
+export type RaceResultsResponse = {
+  MRData: RaceTable;
+};

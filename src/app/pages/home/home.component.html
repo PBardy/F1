@@ -103,9 +103,12 @@
                 ></app-constructors-standings-table>
               </div>
             </mat-tab>
-            <mat-tab label="Last Race">
+            <mat-tab label="Race Results">
               <div class="tab-group__content">
-                <app-last-race-table></app-last-race-table>
+                <app-race-results-table
+                [round]="selectedRound"
+                [season]="selectedSeason"
+                ></app-race-results-table>
               </div>
             </mat-tab>
           </mat-tab-group>

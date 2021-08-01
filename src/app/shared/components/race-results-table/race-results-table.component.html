@@ -1,7 +1,8 @@
 <div class="header vbox">
   <h4>Race Details</h4>
+  <div><span>Season: </span> {{season}} &nbsp; <span>Round: </span> {{round}}</div>
   <div><span>Date: </span>{{raceDate}} @ {{raceTime}}</div>
-  <div><span>Race: </span>{{raceName}} @ <a href={{raceTrackUrl}}>{{raceTrack}}</a></div>
+  <div><span>Race: </span><a href={{raceUrl}}>{{raceName}}</a> @ <a href={{raceTrackUrl}}>{{raceTrack}}</a></div>
 </div>
 
 <ng-container *ngIf="dataLoaded">
