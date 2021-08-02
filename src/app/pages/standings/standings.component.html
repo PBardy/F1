@@ -1,1 +1,55 @@
-<p>standings works!</p>
+<app-database-layout [pageTitle]="'Formula 1'">
+  <div class="section">
+    <div class="section-content vbox vgap-20">
+      <div class="form-controls vbox vgap-20 hcenter" *ngIf="seasonsLoaded">
+        <div class="vbox vgap-5 hcenter">
+          <h2>F1 Standings</h2>
+          <p>
+            The tables below detail the the driver standings for the selected season and round. <br> 
+            Historic data ranges from {{firstSeason.season}} - {{latestSeason.season}}.
+          </p>
+        </div>
+        <div class="hbox hgap-20">
+          <mat-form-field *ngIf="latestSeason">
+            <mat-label>Season</mat-label>
+            <mat-select [(value)]="latestSeason.season" (selectionChange)="onSeasonChange($event)">
+              <mat-option *ngFor="let season of seasons" [value]="season.season">{{season.season}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="latestRound">
+            <mat-label>Round</mat-label>
+            <mat-select [(value)]="latestRound" (selectionChange)="onRoundChange($event)">
+              <mat-option *ngFor="let round of rounds" [value]="round">{{round}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-tab-group class="tab-group">
+        <mat-tab label="Drivers">
+          <div class="tab-group__content">
+            <app-drivers-standings-table 
+              [round]="selectedRound"
+              [season]="selectedSeason"
+            ></app-drivers-standings-table>
+          </div>
+        </mat-tab>
+        <mat-tab label="Constructors">
+          <div class="tab-group__content">
+            <app-constructors-standings-table
+            [round]="selectedRound"
+            [season]="selectedSeason"
+            ></app-constructors-standings-table>
+          </div>
+        </mat-tab>
+        <mat-tab label="Race Results">
+          <div class="tab-group__content">
+            <app-race-results-table
+            [round]="selectedRound"
+            [season]="selectedSeason"
+            ></app-race-results-table>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</app-database-layout>

@@ -1,0 +1,69 @@
+<div class="app mat-app-background">
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sidenav" #sidenav>
+      <mat-list class="sidenav__title">
+        <mat-list-item>
+          <h2>Formula 1</h2>
+        </mat-list-item>
+      </mat-list>
+      <mat-nav-list class="sidenav__nav-list">
+        <mat-divider></mat-divider>
+        <mat-list-item class="sidenav__nav-list-item">
+          <mat-icon matPrefix>home</mat-icon>
+          <span>Home</span>
+        </mat-list-item>
+        <mat-list-item class="sidenav__nav-list-item">
+          <mat-icon matPrefix>calendar_today</mat-icon>
+          <span>Race Calendar</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>Standings</h3>
+        <mat-list-item class="sidenav__nav-list-item">
+          <mat-icon matPrefix>pin</mat-icon>
+          <span>Driver Standings</span>
+        </mat-list-item>
+        <mat-list-item class="sidenav__nav-list-item">
+          <mat-icon matPrefix>pin</mat-icon>
+          <span>Constructor Standings</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>Drivers</h3>
+        <mat-list-item class="sidenav__nav-list-item">
+          <mat-icon matPrefix>sports_motorsports</mat-icon>
+          <span>Current Drivers</span>
+        </mat-list-item>
+        <mat-list-item class="sidenav__nav-list-item">
+          <mat-icon matPrefix>sports_motorsports</mat-icon>
+          <span>All Drivers</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>Constructors</h3>
+        <mat-list-item class="sidenav__nav-list-item" routerLink="/constructors/all">
+          <mat-icon matPrefix>room</mat-icon>
+          <span>All Constructors</span>
+        </mat-list-item>
+        <mat-list-item class="sidenav__nav-list-item" routerLink="/constructors/current">
+          <mat-icon matPrefix>room</mat-icon>
+          <span>Current Constructors</span>
+        </mat-list-item>
+        <h3 matSubheader>Circuits</h3>
+        <mat-list-item class="sidenav__nav-list-item">
+          <mat-icon matPrefix>room</mat-icon>
+          <span>Current Circuits</span>
+        </mat-list-item>
+        <mat-list-item class="sidenav__nav-list-item">
+          <mat-icon matPrefix>room</mat-icon>
+          <span>All Circuits</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+      <!-- Toolbar -->
+      <app-toolbar [sidenav]="sidenav" [title]="pageTitle"></app-toolbar>
+      <!-- Content -->
+      <ng-content></ng-content>
+      <!-- Footer -->
+      <app-footer></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

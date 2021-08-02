@@ -1,0 +1,39 @@
+.mat-drawer-container {
+  background: #eee;
+}
+
+.sidenav-container, .sidenav {
+  height: 100%;
+  min-height: 100vh;
+}
+
+.sidenav {
+  min-width: 320px;
+
+  .sidenav__title h2 {
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidenav__nav-list {
+
+    h3 {
+      height: auto;
+      margin-top: 10px;
+      padding: 5px 16px;
+    }
+
+    .sidenav__nav-list-item {
+
+      .mat-list-item-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0px 5px;
+      }
+
+    }
+
+  }
+  
+}

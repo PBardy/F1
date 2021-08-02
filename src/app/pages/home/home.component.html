@@ -1,121 +1,55 @@
-<div class="app mat-app-background">
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav class="sidenav" #sidenav>
-      <mat-list class="sidenav__title">
-        <mat-list-item>
-          <h2>Formula 1</h2>
-        </mat-list-item>
-      </mat-list>
-      <mat-nav-list class="sidenav__nav-list">
-        <mat-divider></mat-divider>
-        <mat-list-item class="sidenav__nav-list-item">
-          <mat-icon matPrefix>home</mat-icon>
-          <span>Home</span>
-        </mat-list-item>
-        <mat-list-item class="sidenav__nav-list-item">
-          <mat-icon matPrefix>calendar_today</mat-icon>
-          <span>Race Calendar</span>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <h3 matSubheader>Standings</h3>
-        <mat-list-item class="sidenav__nav-list-item">
-          <mat-icon matPrefix>pin</mat-icon>
-          <span>Driver Standings</span>
-        </mat-list-item>
-        <mat-list-item class="sidenav__nav-list-item">
-          <mat-icon matPrefix>pin</mat-icon>
-          <span>Constructor Standings</span>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <h3 matSubheader>Drivers</h3>
-        <mat-list-item class="sidenav__nav-list-item">
-          <mat-icon matPrefix>sports_motorsports</mat-icon>
-          <span>Current Drivers</span>
-        </mat-list-item>
-        <mat-list-item class="sidenav__nav-list-item">
-          <mat-icon matPrefix>sports_motorsports</mat-icon>
-          <span>All Drivers</span>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <h3 matSubheader>Circuits</h3>
-        <mat-list-item class="sidenav__nav-list-item">
-          <mat-icon matPrefix>room</mat-icon>
-          <span>Current Circuits</span>
-        </mat-list-item>
-        <mat-list-item class="sidenav__nav-list-item">
-          <mat-icon matPrefix>room</mat-icon>
-          <span>All Circuits</span>
-        </mat-list-item>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content class="content">
-      <app-toolbar [sidenav]="sidenav" [title]="'Formula 1'"></app-toolbar>
-      <div class="section">
-        <div class="section-header"></div>
-        <div class="section-content">
-
+<app-database-layout [pageTitle]="'Formula 1'">
+  <div class="section">
+    <div class="section-content vbox vgap-20">
+      <div class="form-controls vbox vgap-20 hcenter" *ngIf="seasonsLoaded">
+        <div class="vbox vgap-5 hcenter">
+          <h2>F1 Standings</h2>
+          <p>
+            The tables below detail the the driver standings for the selected season and round. <br> 
+            Historic data ranges from {{firstSeason.season}} - {{latestSeason.season}}.
+          </p>
+        </div>
+        <div class="hbox hgap-20">
+          <mat-form-field *ngIf="latestSeason">
+            <mat-label>Season</mat-label>
+            <mat-select [(value)]="latestSeason.season" (selectionChange)="onSeasonChange($event)">
+              <mat-option *ngFor="let season of seasons" [value]="season.season">{{season.season}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="latestRound">
+            <mat-label>Round</mat-label>
+            <mat-select [(value)]="latestRound" (selectionChange)="onRoundChange($event)">
+              <mat-option *ngFor="let round of rounds" [value]="round">{{round}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
-      <div class="section">
-        <div class="section-content vbox vgap-20">
-
-          <div class="form-controls vbox vgap-20 hcenter" *ngIf="seasonsLoaded">
-
-            <div class="vbox vgap-5 hcenter">
-              <h2>F1 Standings</h2>
-              <p>
-                The tables below detail the the driver standings for the selected season and round. <br> 
-                Historic data ranges from {{firstSeason.season}} - {{latestSeason.season}}.
-              </p>
-            </div>
-
-            <div class="hbox hgap-20">
-              <mat-form-field *ngIf="latestSeason">
-                <mat-label>Season</mat-label>
-                <mat-select [(value)]="latestSeason.season" (selectionChange)="onSeasonChange($event)">
-                  <mat-option *ngFor="let season of seasons" [value]="season.season">{{season.season}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field *ngIf="latestRound">
-                <mat-label>Round</mat-label>
-                <mat-select [(value)]="latestRound" (selectionChange)="onRoundChange($event)">
-                  <mat-option *ngFor="let round of rounds" [value]="round">{{round}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
+      <mat-tab-group class="tab-group">
+        <mat-tab label="Drivers">
+          <div class="tab-group__content">
+            <app-drivers-standings-table 
+              [round]="selectedRound"
+              [season]="selectedSeason"
+            ></app-drivers-standings-table>
           </div>
-
-          <mat-tab-group class="tab-group">
-            <mat-tab label="Drivers">
-              <div class="tab-group__content">
-                <app-drivers-standings-table 
-                  [round]="selectedRound"
-                  [season]="selectedSeason"
-                ></app-drivers-standings-table>
-              </div>
-            </mat-tab>
-            <mat-tab label="Constructors">
-              <div class="tab-group__content">
-                <app-constructors-standings-table
-                [round]="selectedRound"
-                [season]="selectedSeason"
-                ></app-constructors-standings-table>
-              </div>
-            </mat-tab>
-            <mat-tab label="Race Results">
-              <div class="tab-group__content">
-                <app-race-results-table
-                [round]="selectedRound"
-                [season]="selectedSeason"
-                ></app-race-results-table>
-              </div>
-            </mat-tab>
-          </mat-tab-group>
-        </div>
-      </div>
-      <!-- Footer -->
-      <app-footer></app-footer>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
+        </mat-tab>
+        <mat-tab label="Constructors">
+          <div class="tab-group__content">
+            <app-constructors-standings-table
+            [round]="selectedRound"
+            [season]="selectedSeason"
+            ></app-constructors-standings-table>
+          </div>
+        </mat-tab>
+        <mat-tab label="Race Results">
+          <div class="tab-group__content">
+            <app-race-results-table
+            [round]="selectedRound"
+            [season]="selectedSeason"
+            ></app-race-results-table>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</app-database-layout>

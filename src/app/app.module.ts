@@ -41,14 +41,29 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { DriversStandingsTableComponent } from './shared/components/drivers-standings-table/drivers-standings-table.component';
 import { ConstructorsStandingsTableComponent } from './shared/components/constructors-standings-table/constructors-standings-table.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { LastRaceTableComponent } from './shared/components/last-race-table/last-race-table.component';
-import { EventCardComponent } from './pages/home/event-card/event-card.component';
 import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
 import { StandingsComponent } from './pages/standings/standings.component';
 import { RaceResultsTableComponent } from './shared/components/race-results-table/race-results-table.component';
+import { CircuitsComponent } from './pages/circuits/circuits.component';
+import { CircuitComponent } from './pages/circuit/circuit.component';
+import { DriversComponent } from './pages/drivers/drivers.component';
+import { DriverComponent } from './pages/driver/driver.component';
+import { ConstructorsComponent } from './pages/constructors/constructors.component';
+import { ConstructorComponent } from './pages/constructor/constructor.component';
+import { DatabaseLayoutComponent } from './shared/components/database-layout/database-layout.component';
+import { ConstructorCardComponent } from './pages/constructors/constructor-card/constructor-card.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DriversStandingsTableComponent, ConstructorsStandingsTableComponent, FooterComponent, LastRaceTableComponent, EventCardComponent, ToolbarComponent, StandingsComponent, RaceResultsTableComponent],
+  declarations: [
+    AppComponent, 
+    HomeComponent, 
+    DriversStandingsTableComponent, 
+    ConstructorsStandingsTableComponent, 
+    FooterComponent, 
+    ToolbarComponent, 
+    StandingsComponent, 
+    RaceResultsTableComponent, CircuitsComponent, CircuitComponent, DriversComponent, DriverComponent, ConstructorsComponent, ConstructorComponent, DatabaseLayoutComponent, ConstructorCardComponent
+  ],
   imports: [
     AppRoutingModule,
     BrowserModule,

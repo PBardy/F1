@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Race, RaceTable, Season, SeasonResponse } from 'src/app/definitions';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 

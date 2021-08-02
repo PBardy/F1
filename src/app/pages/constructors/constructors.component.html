@@ -1,0 +1,9 @@
+<app-database-layout [pageTitle]="'Constructors'">
+  <div class="section vbox">
+    <div class="section-content vbox vgap-20">
+      <div class="constructor-cards" *ngIf="constructorsList">
+        <app-constructor-card *ngFor="let constructor of constructorsList" [team]="constructor"></app-constructor-card>
+      </div>
+    </div>
+  </div>
+</app-database-layout>
